@@ -6,6 +6,16 @@ import (
 	"strings"
 )
 
+// FinalResult returns the final match result (ResultTypeID == 2) if available.
+func (m *Match) FinalResult() *MatchResult {
+	for _, r := range m.MatchResults {
+		if r.ResultTypeID == 2 {
+			return &r
+		}
+	}
+	return nil
+}
+
 // GetLeagueByShortcut returns all league entries matching the given shortcut (e.g. "bl1").
 func (c *Client) GetLeagueByShortcut(ctx context.Context, shortcut string) ([]League, error) {
 	leagues, err := c.GetAvailableLeagues(ctx)

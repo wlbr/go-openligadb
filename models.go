@@ -115,16 +115,6 @@ type Match struct {
 	NumberOfViewers    *int          `json:"numberOfViewers"`
 }
 
-// FinalResult returns the final match result (ResultTypeID == 2) if available.
-func (m *Match) FinalResult() *MatchResult {
-	for _, r := range m.MatchResults {
-		if r.ResultTypeID == 2 {
-			return &r
-		}
-	}
-	return nil
-}
-
 // GoalGetter represents a top scorer entry for a league season.
 type GoalGetter struct {
 	GoalGetterID   int    `json:"goalGetterId"`
